@@ -13,8 +13,8 @@ class PolyTreeNode
         old_parent = @parent # A's parent is currently C
         @parent = new_parent
 
-
         if !old_parent.nil? 
+            # self here refers to the node were are giving a parent (the child)
             old_parent.children = old_parent.children.reject{ |child| self == child }
         end
 
@@ -23,12 +23,10 @@ class PolyTreeNode
             new_parent.children << self
         end
         
-
-        
-
     end
 
-    # def add_child(new_parent)
-    #     new_parent.children << self
-    # end
+    def add_child(new_child)
+        new_child.parent=(self) # self refers to the node we are giving a child (new parent)
+    end
+
 end
